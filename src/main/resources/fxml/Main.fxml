@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<TabPane fx:controller="sample.Controller"
+         maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+         minWidth="-Infinity" prefHeight="400.0"
+         prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1"
+         xmlns="http://javafx.com/javafx/8">
+    <tabs>
+        <Tab text="条码">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <ListView fx:id="barCodeList" onMouseClicked="#handleTextAction" prefHeight="371.0" prefWidth="200.0"/>
+                        <ImageView fx:id="barCodeImageView" fitHeight="250" fitWidth="300" layoutX="250.0" layoutY="29.0" pickOnBounds="true"
+                                   preserveRatio="true"/>
+                        <Button fx:id="barCodeSubmit"  onAction="#handleButtonAction" layoutX="505.0" layoutY="308.0" mnemonicParsing="false" text="Generate"/>
+                        <TextField fx:id="barCodeText" layoutX="222.0" layoutY="308.0" prefHeight="24.0" prefWidth="277.0"/>
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab text="二维码">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>
