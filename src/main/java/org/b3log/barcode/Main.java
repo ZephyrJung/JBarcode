@@ -1,4 +1,4 @@
-package sample;
+package org.b3log.barcode;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
