@@ -11,6 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import org.b3log.utils.FileHelper;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -25,15 +27,6 @@ public class Controller {
     public TextField barCodeText;
     public ImageView barCodeImageView;
 
-    /*public Controller() {
-        List<String> names = FileHelper.getImageNames();
-        if (names != null && names.size() > 0) {
-            ObservableList<String> items = FXCollections.observableArrayList();
-            items.addAll(names);
-            barCodeList.setItems(items);
-        }
-    }*/
-
     public void initialize() {
         List<String> names = FileHelper.getImageNames();
         if (names != null && names.size() > 0) {
@@ -47,16 +40,19 @@ public class Controller {
         String text = barCodeText.getText();
         OutputStream out = new FileOutputStream(FileHelper.getImagePath(text));
         BarCodeBuilder.buildBarCode(text, out);
-        Image image = new Image("file://" + FileHelper.getImagePath(text));
+        Image image = new Image(new FileInputStream(FileHelper.getImagePath(text)));
         barCodeImageView.setImage(image);
         ObservableList<String> items = barCodeList.getItems();
         items.add(text);
         barCodeList.setItems(items);
     }
 
-    public void handleTextAction(MouseEvent mouseEvent) {
+    public void handleTextAction(MouseEvent mouseEvent) throws FileNotFoundException {
         String item = barCodeList.getSelectionModel().getSelectedItem();
-        Image image = new Image("file://" + FileHelper.getImagePath(item));
+        Image image = new Image(new FileInputStream(FileHelper.getImagePath(item)));
         barCodeImageView.setImage(image);
+    }
+
+    public static void main(String[] args){
     }
 }

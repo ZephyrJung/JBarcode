@@ -20,6 +20,7 @@ public class FileHelper {
     }
 
     public static String getImagePath(String name) {
+        System.out.println(path + File.separator + name + ".png");
         return path + File.separator + name + ".png";
     }
 
